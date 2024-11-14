@@ -354,3 +354,22 @@ body {
 .content4 {
     box-shadow: 0 4px 50px #2c56d4;
 }
+
+.toTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20;
+}
+
+.toTop i {
+    font-size: 30px;
+    transition: .2s ease;
+    opacity: .5;
+    color: white;
+}
+
+.toTop i:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
