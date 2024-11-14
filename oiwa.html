@@ -74,20 +74,6 @@
 
 
 
-        btn.addEventListener("mousemove", (e) => {
-            const x = e.pageX - btn.offsetLeft;
-            const y = e.pageY - btn.offsetTop;
-            const x2 = e.pageX - (cir.offsetLeft * .8);
-            const y2 = e.pageY - (cir.offsetTop);
-
-            btn.style.setProperty("--y", y + "px");
-            btn.style.setProperty("--x", x + "px");
-        
-            cir.style.setProperty("--y", y2 + "px");
-            cir.style.setProperty("--x", x2 + "px");
-        })   
-
-
         const getScrollPercent = () => {
         // スクロール量
         const scrolled = window.scrollY;
@@ -160,7 +146,6 @@
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
-                duration: 9000
             })
         })
         
