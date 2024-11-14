@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="bar"></div>
+        <div class="xbtn">
+            <div class="btnbar"></div>
+            <div class="btnbar"></div>
+            <div class="btnbar"></div>
+        </div>
+        <div class="mask"></div>
+            <div class="topbar">
+                <ul>
+                    <li><a href="#">HOME  </a>
+                        <div class="underBar"></div>
+                        <div class="circle"></div>
+                    </li>
+                    <li><a href="#">WORKS  </a>
+                        <div class="underBar"></div>
+                        <div class="circle"></div>
+                    </li>
+                    <li><a href="#">SIGNUP  </a>
+                        <div class="underBar"></div>
+                        <div class="circle"></div>
+                    </li>
+                    <li><a href="#">LOGIN  </a>
+                        <div class="underBar"></div>
+                        <div class="circle"></div>
+                    </li>
+                    <li><a href="#">SETTING  </a>
+                        <div class="underBar"></div>
+                        <div class="circle"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn">
+                <div class="oiwa">OIWA</div>
+                <div class="cir"></div>
+            </div>
+    </div>
+    <div class="container2">
+        <div class="content content1"><span>cherish your health</span></div>
+        <div class="content content2"><span>This is the best tip</span></div>
+        <div class="content content3"><span>Your life is meant to be joy</span></div>
+        <div class="content content4"><span>And love</span></div>
+    </div>
+    <script>
+        const btn = document.querySelector(".btn")
+        const cir = document.querySelector(".cir");
+
+        btn.addEventListener("mouseover", () => {
+            cir.style.width = "0px";
+            cir.style.height = "0px";
+            btn.classList.add("animated")
+        })
+
+
+        btn.addEventListener("mouseleave", () => {
+            cir.style.width = 0;
+            cir.style.height = 0;
+            btn.classList.remove("animated")
+        })
+
+
+
+
+        btn.addEventListener("mousemove", (e) => {
+            const x = e.pageX - btn.offsetLeft;
+            const y = e.pageY - btn.offsetTop;
+            const x2 = e.pageX - (cir.offsetLeft * .8);
+            const y2 = e.pageY - (cir.offsetTop);
+
+            btn.style.setProperty("--y", y + "px");
+            btn.style.setProperty("--x", x + "px");
+        
+            cir.style.setProperty("--y", y2 + "px");
+            cir.style.setProperty("--x", x2 + "px");
+        })   
+
+
+        const getScrollPercent = () => {
+        // スクロール量
+        const scrolled = window.scrollY;
+        //console.log(`${scrolled} スクロールされました`);
+
+        // ページ全体の高さ
+        const pageHeight = document.documentElement.scrollHeight;
+
+        // 表示領域の高さ
+        const viewHeight = document.documentElement.clientHeight;
+
+        // スクロールされた割合
+        const percentage = scrolled / (pageHeight - viewHeight) * 100;
+        
+        // プログレスバーに幅を指定
+        document.querySelector('#bar').style.width = `${percentage}%`;
+        }
+
+        window.addEventListener('scroll', getScrollPercent);
+
+
+        
+        const topbar = document.querySelector(".topbar");
+        const xbtn = document.querySelector(".xbtn");
+        const btnbars = document.querySelectorAll(".btnbar");
+        const mask = document.querySelector(".mask")
+        
+        xbtn.addEventListener("click", () => {
+            btnbars.forEach((btnbar) => {
+                btnbar.classList.toggle("clicked")
+            })
+            topbar.classList.toggle("clicked");
+            mask.classList.toggle("clicked")
+            topbar = !topbar
+        })
+
+        mask.addEventListener("click", () => {
+            
+        if(mask.classList.contains("clicked")) {
+            mask.classList.remove("clicked")
+        }
+            topbar.classList.toggle("clicked");
+            btnbars.forEach((btnbar) => {
+                btnbar.classList.toggle("clicked")
+            })
+            topbar = !topbar;
+        })
+
+        const underBar = document.querySelectorAll(".underBar")
+        const topbarullia = document.querySelectorAll(".topbar ul li a");
+
+        topbarullia.forEach((a) => {
+            a.addEventListener("mouseover", () => {
+                underBar.forEach((underbar) => {
+                    a.nextElementSibling.classList.add("hovered")
+                })
+            })
+            a.addEventListener("mouseleave", () => {
+                underBar.forEach((underbar) => {
+                    a.nextElementSibling.classList.remove("hovered")
+                })
+            })
+        })
+
+        </script>
+</body>
+</html>

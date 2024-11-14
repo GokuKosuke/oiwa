@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    text-align: center;
+    padding: 2rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  #btn {
+    background: #0bd;
+    padding: .75rem 1rem;
+    border-radius: 8px;
+  }
+  #btn:disabled {
+    background: #ccc;
+  }
+    </style>
+</head>
+<body>
+    <label><input id="check" type="checkbox"> 利用規約に同意する</label>
+<input id="btn" type="submit" value="送信する" disabled>
+
+<script>
+    const isAgreed = document.querySelector('#check');
+const btn = document.querySelector('#btn');
+  
+isAgreed.addEventListener('change', () => {
+  //console.log('チェックされました');
+  
+  // if (isAgreed.checked){
+  //   btn.disabled = false;
+  // } else {
+  //   btn.disabled = true;
+  // }
+  
+  btn.disabled = !isAgreed.checked;
+});
+</script>
+</body>
+</html>
